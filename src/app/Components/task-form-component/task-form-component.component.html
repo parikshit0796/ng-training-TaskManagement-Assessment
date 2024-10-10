@@ -1,0 +1,155 @@
+<div class="slds-modal slds-fade-in-open" role="dialog">
+    <div class="slds-modal__container">
+      <div class="slds-modal__header">
+        <h2 class="slds-text-heading_medium">
+          {{ taskId ? 'Edit Task' : 'New Task' }}
+        </h2>
+      </div>
+  
+      <div class="slds-modal__content slds-p-around_medium">
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-2">
+              <div class="slds-form-element">
+                <label class="slds-form-element__label" for="user">User:</label>
+                <div class="slds-form-element__control">
+                  <select id="user" class="slds-select" formControlName="user">
+                    <option [ngValue]="null" disabled selected>Select User</option>
+                    <option *ngFor="let user of users" [ngValue]="user">
+                      {{ user }}
+                    </option>
+                  </select>
+                  <small
+                    class="slds-text-color_error"
+                    *ngIf="
+                      taskForm.get('user')?.invalid &&
+                      taskForm.get('user')?.touched
+                    "
+                  >
+                    User is required.
+                  </small>
+                </div>
+              </div>
+            </div>
+  
+            <div class="slds-col slds-size_1-of-2">
+              <div class="slds-form-element">
+                <label class="slds-form-element__label" for="status">Status:</label>
+                <div class="slds-form-element__control">
+                  <select id="status" class="slds-select" formControlName="status">
+                    <option [ngValue]="null" disabled selected>Select Status</option>
+                    <option *ngFor="let status of statuses" [ngValue]="status">
+                      {{ status }}
+                    </option>
+                  </select>
+                  <small
+                    class="slds-text-color_error"
+                    *ngIf="
+                      taskForm.get('status')?.invalid &&
+                      taskForm.get('status')?.touched
+                    "
+                  >
+                    Status is required.
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-2">
+              <div class="slds-form-element">
+                <label class="slds-form-element__label" for="dueDate"
+                  >Due Date:</label
+                >
+                <div class="slds-form-element__control">
+                  <input
+                    id="dueDate"
+                    type="date"
+                    class="slds-input"
+                    formControlName="dueDate"
+                  />
+                  <small
+                    class="slds-text-color_error"
+                    *ngIf="
+                      taskForm.get('dueDate')?.invalid &&
+                      taskForm.get('dueDate')?.touched
+                    "
+                  >
+                    Due Date is required.
+                  </small>
+                </div>
+              </div>
+            </div>
+  
+            <div class="slds-col slds-size_1-of-2">
+              <div class="slds-form-element">
+                <label class="slds-form-element__label" for="priority"
+                  >Priority:</label
+                >
+                <div class="slds-form-element__control">
+                  <select id="priority" class="slds-select" formControlName="priority">
+                    <option [ngValue]="null" disabled selected>Select Priority</option>
+                    <option *ngFor="let priority of priorities" [ngValue]="priority">
+                      {{ priority }}
+                    </option>
+                  </select>
+                  <small
+                    class="slds-text-color_error"
+                    *ngIf="
+                      taskForm.get('priority')?.invalid &&
+                      taskForm.get('priority')?.touched
+                    "
+                  >
+                    Priority is required.
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="slds-form-element">
+            <label class="slds-form-element__label" for="comment">Comment:</label>
+            <div class="slds-form-element__control">
+              <input
+                id="comment"
+                type="text"
+                class="slds-input"
+                formControlName="comment"
+                placeholder="Add Commnet"
+              />
+              <small
+                class="slds-text-color_error"
+                *ngIf="
+                  taskForm.get('comment')?.invalid &&
+                  taskForm.get('comment')?.touched
+                "
+              >
+                Comment is required.
+              </small>
+            </div>
+          </div>
+  
+          <div class="slds-modal__footer">
+            <button
+              type="button"
+              class="slds-button slds-button_neutral btn2"
+              (click)="closeModal()"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="slds-button slds-button_brand btn3"
+              [disabled]="taskForm.invalid"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="slds-backdrop slds-backdrop_open"></div>
+  

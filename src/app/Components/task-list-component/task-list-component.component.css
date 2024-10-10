@@ -1,0 +1,54 @@
+.slds-table td, .slds-table th {
+    vertical-align: middle;
+  }
+  
+  .wrp{
+    padding: 2%;
+    margin: 2%;
+  }
+
+  .btn1{
+    background-color: #FFE7A5;
+    color: #669f04;
+    width: 120px;
+    margin-left: 80%;
+  }
+
+  .btn2{
+    background-color: #FFE7A5;
+    color: #669f04;
+  
+}
+
+.btn3{
+    background-color: #669f04;
+    color: #FFE7A5;
+}
+
+  td:nth-child(6) {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .slds-button_neutral {
+    margin: 0 5px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .slds-page-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .slds-text-align_right {
+      text-align: left;
+      margin-top: 10px;
+    }
+  
+    .slds-table {
+      font-size: 12px;
+    }
+  }
+  
